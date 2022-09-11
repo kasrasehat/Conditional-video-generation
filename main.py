@@ -2,7 +2,7 @@ from Dataloader import CustomDataLoader
 from torchvision import transforms
 from torch.utils.data import DataLoader
 
-batch_size = 8
+batch_size = 2
 device = 'cuda'
 height, width = 224, 224
 trans = transforms.Compose([
@@ -13,7 +13,11 @@ trans = transforms.Compose([
 ])
 
 # dataset
-dataset1 = CustomDataLoader(fmri_file='./data/fmri/sub-01_perceptionNaturalImageTraining_original_VC.h5',
-                            imagenet_folder='./data/images/training',
-                            transform=trans)
+dataset1 = CustomDataLoader(csv_file='Book1.csv',
+                            transform=trans, n=10, height=height, width=width)
 dataloader1 = DataLoader(dataset1, batch_size=batch_size, shuffle=True, drop_last=True)
+for i, data in enumerate(dataloader1):
+    print(i)
+    print(data[0].shape)
+    print(data[1])
+
