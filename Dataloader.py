@@ -53,7 +53,6 @@ class CustomDataLoader(Dataset):
                 cap.release()
         return frames
 
-
     def __getitem__(self, item):
         path = self.main_file.iloc[item]['path_to_video']
         caption = self.main_file.iloc[item]['caption']
